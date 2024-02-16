@@ -1,0 +1,27 @@
+@use "../../../scss/variables" as v;
+
+.form-one form .client-fields .add-client-form {
+  position: absolute;
+  background: #007bff;
+  border-radius: 10px;
+  padding: 2% 8%;
+
+  label {
+    color: #fff;
+    text-align: center;
+  }
+
+  button {
+    background-color: #8a2be2;
+    color: #fff;
+    font-size: 14px;
+
+    &:hover {
+      background-color: v.$cobalt;
+    }
+  }
+
+  .close-icon {
+    color: v.$white;
+  }
+}

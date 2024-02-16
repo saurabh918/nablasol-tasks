@@ -1,0 +1,40 @@
+@use "../../scss/variables" as v;
+
+.header {
+  background-color: v.$charcoal;
+  color: v.$white;
+  padding: 20px;
+  
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  a {
+    color: v.$white;
+    text-decoration: none;
+  }
+
+  button {
+    background-color: #f44336;
+    color: v.$white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #d32f2f;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
