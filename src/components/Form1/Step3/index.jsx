@@ -25,7 +25,7 @@ const Step3 = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="who-can-manage-projects">
-        <h3>Who can manage projects?</h3>
+        <h2>Who can manage projects?</h2>
         <p>Don't panic - You can also customize these permissions in settings</p>
         <div className="options">
           <div
@@ -59,8 +59,10 @@ const Step3 = () => {
             </div>
           </div>
         </div>
+        <div className='step-navigation'>
         <span className='back-button' onClick={() => { dispatch(decrementStep()) }}>&lt; back</span>
         <input type='submit' value="Next" />
+        </div>
       </div>
     </form>
   );

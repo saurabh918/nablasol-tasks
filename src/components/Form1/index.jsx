@@ -9,6 +9,7 @@ import "./style.scss"
 import { useDispatch, useSelector } from 'react-redux';
 import { closeForm, incrementStep } from '../../reducers/FormSlice';
 import Step4 from './Step4';
+import StepNavigation from '../StepNavigation';
 
 
 function Form1() {
@@ -31,6 +32,7 @@ function Form1() {
       {currentStep === 2 && <Step2 />}
       {currentStep === 3 && <Step3 />}
       {currentStep === 4 && <Step4 />}
+      <StepNavigation activeStep={currentStep} />
     </div>
   );
 }

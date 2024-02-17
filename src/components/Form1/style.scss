@@ -24,7 +24,8 @@
 
     h2 {
       margin-bottom: 20px;
-      font-size: 1.5rem;
+      font-size: 20px;
+      font-weight: bold;
       text-align: center;
     }
 
@@ -72,6 +73,13 @@
       }
     }
 
+    p {
+      margin-bottom: 32px;
+      color: #5f5f5f;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
     button {
       padding: 0.5rem 1rem;
       border: 1px solid #ccc;
@@ -83,7 +91,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #218838;
+        background-color: v.$cobalt;
       }
     }
 
@@ -119,6 +127,14 @@
     & + .back-button {
       left: -10%;
     }
+  }
+
+  @media only screen and (max-width: v.$xl) {
+    width: 40%;
+  }
+
+  @media only screen and (max-width: v.$md) {
+    width: 80%;
   }
 }
 

@@ -5,7 +5,8 @@ const initialState = {
   showNewClientForm: false,
   currentStep: 1,
   currentStructure: "list",
-  selectedOption: "Everyone"
+  selectedOption: "Everyone",
+  currentAccountFormTab: 1
 }
 
 const FormSlice = createSlice({
@@ -68,6 +69,14 @@ const FormSlice = createSlice({
       return {
         ...state,
         selectedOption: action.payload
+      }
+    },
+    incrementCurrentAccTab: (state) => {
+      if(state.currentAccountFormTab !== 2) {
+        return {
+          ...state,
+          currentAccountFormTab: state.currentAccountFormTab + 1
+        }
       }
     }
   }

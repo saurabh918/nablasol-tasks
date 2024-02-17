@@ -1,9 +1,8 @@
 @use "../../scss/variables" as v;
 
 .header {
-  background-color: v.$charcoal;
+  padding: 20px 20px 0;
   color: v.$white;
-  padding: 20px;
   
   .wrapper {
     display: flex;

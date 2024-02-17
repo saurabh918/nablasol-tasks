@@ -22,6 +22,8 @@ function ContainerSelection() {
 
   return (
     <form onSubmit={onSubmit}>
+      <h2>Select a view</h2>
+      <p>You can also customize these views in settings</p>
     <div className="container-selection">
       <div
         className={`container ${selectedContainer === 'list' ? 'selected' : ''}`}
@@ -38,8 +40,10 @@ function ContainerSelection() {
         <span className='structure-title'>Board</span>
       </div>
     </div>
+    <div className='step-navigation'>
     <span className='back-button' onClick={() => { dispatch(decrementStep()) }}>&lt; back</span>
     <input type='submit' value="Next" />
+    </div>
     </form>
   );
 }

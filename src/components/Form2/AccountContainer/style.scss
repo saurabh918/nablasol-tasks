@@ -1,0 +1,77 @@
+@use "../../../scss/variables" as v;
+
+.account-container-box {
+  margin-top: 45px;
+  position: relative;
+  border-radius: 25px;
+  background: v.$white;
+
+  p{
+    &.instructions {
+      width: 58%;
+      margin: 10px auto 35px;
+      color: #4d4d4d;
+      text-align: center;
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  // form {
+  //   label {
+  //     margin-bottom: 12px;
+  //     // color: #4d4d4d;
+  //   }
+  // }
+  .form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 40px;
+  }
+  
+  .input-group {
+    flex: 0 0 48%;
+  }
+  
+  label {
+    margin-bottom: 12px;
+    display: block;
+    color: #4d4d4d;
+    // font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px 0 8px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  
+    &::placeholder {
+      color: #bfbfbf;
+      font-size: 14px;
+    }
+  
+    &[type="submit"] {
+      width: 18%;
+      padding: 11px 0;
+      position: absolute;
+      right: 0;
+      bottom: -17%;
+      background: linear-gradient(to right, #c6c8ff (5%), #7b68ee (70%));
+      color: white;
+    }
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+}
+

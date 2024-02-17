@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NewClient from '../NewClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementStep, incrementStep, showNewClientPopup } from '../../../reducers/FormSlice';
+import StepNavigation from '../../StepNavigation';
 
 
 function Step1() {
@@ -69,6 +70,7 @@ function Step1() {
   }
 
   return (
+    <>
     <form onSubmit={handleFormSubmit}>
       <h2>Create a Project</h2>
       <div>
@@ -125,9 +127,12 @@ function Step1() {
         />
         {errors.endDate && <div className="error">{errors.endDate}</div>}
       </div>
+      <div className='step-navigation'>
       <span className='back-button' onClick={() => { dispatch(decrementStep()) }}>&lt; back</span>
       <input type="submit" value="Next" />
+      </div>
     </form>
+    </>
   );
 }
 
