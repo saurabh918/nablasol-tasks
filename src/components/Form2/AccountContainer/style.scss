@@ -1,10 +1,17 @@
 @use "../../../scss/variables" as v;
 
 .account-container-box {
+  padding-bottom: 45px;
   margin-top: 45px;
-  position: relative;
   border-radius: 25px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
   background: v.$white;
+
+  .step-counter {
+    display: block;
+    color: #999;
+    text-align: center;
+  }
 
   p{
     &.instructions {
@@ -17,60 +24,93 @@
     }
   }
 
-  // form {
-  //   label {
-  //     margin-bottom: 12px;
-  //     // color: #4d4d4d;
-  //   }
-  // }
   .form {
     max-width: 600px;
     margin: 0 auto;
-  }
-  
-  .row {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 40px;
-  }
-  
-  .input-group {
-    flex: 0 0 48%;
-  }
-  
-  label {
-    margin-bottom: 12px;
-    display: block;
-    color: #4d4d4d;
-    // font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px 0 8px 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  
-    &::placeholder {
-      color: #bfbfbf;
-      font-size: 14px;
+
+    .row {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      column-gap: 40px;
     }
-  
-    &[type="submit"] {
-      width: 18%;
-      padding: 11px 0;
+
+    .hide {
+      visibility: hidden;
+    }
+    
+    .input-group {
+      flex: 0 0 48%;
+    }
+    
+    label {
+      margin-bottom: 12px;
+      display: block;
+      color: #4d4d4d;
+    }
+    
+    input {
+      width: 100%;
+      padding: 8px 0 8px 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #4d4d4d;
+    
+      &::placeholder {
+        color: #bfbfbf;
+        font-size: 14px;
+      }
+    
+      &[type="submit"] {
+        width: 100%;
+        padding: 11px 11px 11px 0;
+        background: linear-gradient(to right, #c6c8ff (0%), #7b68ee (70%));
+        color: white;
+
+        &:hover {
+          background: linear-gradient(to right, #7b68ee (100%), #c6c8ff (0%));
+        }
+      }
+    }
+
+    .account-step-navigation {
+      width: 30%;
+      display: flex;
+      column-gap: 15px;
       position: absolute;
       right: 0;
-      bottom: -17%;
-      background: linear-gradient(to right, #c6c8ff (5%), #7b68ee (70%));
-      color: white;
+      bottom: -9%;
+
+      .prev-step-btn {
+        width: 100%;
+        padding: 11px 0 11px 18px;
+        background-color: v.$white;
+        color: #6495ed;
+
+        &:hover {
+          background-color: #f0f8ff;
+        }
+      }
+
+      .right-arrow-icon,.left-arrow-icon {
+        position: absolute;
+        right: 6%;
+        top: 24%;
+        color: v.$white;
+        font-size: 19px;
+      }
+
+      .left-arrow-icon {
+        left: 3%;
+        color: #6495ed;
+      }
     }
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.9rem;
+    
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+    
   }
   
 }

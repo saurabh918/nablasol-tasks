@@ -6,7 +6,7 @@ const initialState = {
   currentStep: 1,
   currentStructure: "list",
   selectedOption: "Everyone",
-  currentAccountFormTab: 1
+  currentAccountFormTab: 2
 }
 
 const FormSlice = createSlice({
@@ -78,9 +78,17 @@ const FormSlice = createSlice({
           currentAccountFormTab: state.currentAccountFormTab + 1
         }
       }
+    },
+    decrementCurrentAccTab: (state) => {
+      if(state.currentAccountFormTab !== 1) {
+        return {
+          ...state,
+          currentAccountFormTab: state.currentAccountFormTab - 1
+        }
+      }
     }
   }
 })
 
-export const {openForm,closeForm,showNewClientPopup,closeClientPopup,incrementStep,decrementStep,resetStep,updateCurrentStructure,updateSelectedOption} = FormSlice.actions
+export const {openForm,closeForm,showNewClientPopup,closeClientPopup,incrementStep,decrementStep,resetStep,updateCurrentStructure,updateSelectedOption,incrementCurrentAccTab,decrementCurrentAccTab} = FormSlice.actions
 export default FormSlice.reducer

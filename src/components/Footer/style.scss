@@ -1,8 +1,9 @@
 @use "../../scss/variables" as v;
 
 .footer {
-  color: v.$white;
   padding: 20px;
+  margin-top: 100px;
+  color: v.$white;
   
   .wrapper {
     display: flex;
@@ -21,7 +22,7 @@
     justify-content: space-between;
 
     a {
-      color: v.$white;
+      color: #7b68ee;
       font-size: 20px;
       &:hover {
         color: #e6e3e3;
@@ -41,6 +42,7 @@
   }
 
   p.copyright-text {
+    color: #7b68ee;
     @media only screen and (max-width: v.$xsm) {
       font-size: 14px;
     }

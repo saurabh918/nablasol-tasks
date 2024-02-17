@@ -9,10 +9,10 @@ const AccountTabs = ({ activeTab }) => {
           <li>Tab 1</li>
         </div>
         <div className='tab'>
-          <li>Tab 2</li>
+          Tab 2
         </div>
         <div className='tab'>
-          <li>Tab 3</li>
+          Tab 3
         </div>
       </>
     ),
