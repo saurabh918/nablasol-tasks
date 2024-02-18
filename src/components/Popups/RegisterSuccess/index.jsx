@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// import css
 import "../style.scss"
 
-import { MdClose } from 'react-icons/md';
 import { useDispatch } from 'react-redux'
+
+// import from slice
 import { resetRegistration } from '../../../reducers/FormSlice'
 
 const RegisterSuccess = () => {

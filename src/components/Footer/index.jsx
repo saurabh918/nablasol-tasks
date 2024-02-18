@@ -1,10 +1,13 @@
 import React from 'react'
 
+// import icons
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+
+// import components
+import Wrapper from '../Wrapper';
 
 // import css
 import "./style.scss"
-import Wrapper from '../Wrapper';
 
 const Footer = () => {
   return (

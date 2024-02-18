@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+
+// import css
 import './style.scss';
 
+// import icons
 import { MdOutlinePeopleOutline } from "react-icons/md";
 import { MdPublic } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
+
 import { useDispatch } from 'react-redux';
+
+// import from slice
 import { decrementStep, incrementStep, updateSelectedOption } from '../../../reducers/FormSlice';
 
 const Step3 = () => {

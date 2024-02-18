@@ -1,8 +1,14 @@
 import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
+
+// import icons
 import { MdClose } from 'react-icons/md';
 
+// import css
 import "../style.scss"
+
+// import from slice
 import { hideNewProjectPopup } from '../../../reducers/FormSlice';
 
 const NewProjectPopup = () => {

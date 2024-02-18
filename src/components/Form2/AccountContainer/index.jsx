@@ -1,10 +1,14 @@
 import React from 'react'
+
+// import css
+import "./style.scss"
+
+import { useSelector } from 'react-redux'
+
+// import components
+import BusinessInfo from '../Step2'
 import AccountTabs from '../AccountTabs'
 import ProfileInfo from '../Step1'
-
-import "./style.scss"
-import { useSelector } from 'react-redux'
-import BusinessInfo from '../Step2'
 
 const AccountContainer = () => {
 

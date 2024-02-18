@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { json } from "react-router-dom"
 
 const storedTasks = JSON.parse(localStorage.getItem("tasks"))
 const initialState = storedTasks ? storedTasks : {

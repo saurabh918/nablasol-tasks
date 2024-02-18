@@ -1,4 +1,6 @@
 import React from 'react'
+
+// import component
 import BusinessForm from './BusinessForm'
 
 const BusinessInfo = () => {

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import NewClient from '../NewClient';
-import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+// import from slice
 import { addTempData, decrementStep, incrementStep, showNewClientPopup } from '../../../reducers/FormSlice';
+
+// import css
 import "./style.scss"
 
 

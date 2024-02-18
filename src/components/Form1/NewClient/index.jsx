@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addClient } from '../../../reducers/ClientSlice';
 
+// import icons
 import { MdClose } from 'react-icons/md';
 
-import "./style.scss"
+import { useDispatch, useSelector } from 'react-redux';
+
+// import from slice
+import { addClient } from '../../../reducers/ClientSlice';
 import { closeClientPopup } from '../../../reducers/FormSlice';
 
+// import css
+import "./style.scss"
 
 function NewClient() {
   const [newClientName, setNewClientName] = useState('');

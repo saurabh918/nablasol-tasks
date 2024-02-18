@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import {v4 as uuidv4} from 'uuid'
+
+// import icons
 import { MdClose } from 'react-icons/md';
+
+// import css
 import './style.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
+
+// import from slice
 import { addTask, removeTask } from '../../../reducers/TaskSlice';
 import { closeForm, decrementStep, incrementStep, showNewProjectPopup } from '../../../reducers/FormSlice';
 
@@ -23,7 +31,7 @@ function TaskForm() {
       console.log("empty error")
       setError("Task name is empty!")
     } else if(taskItems.find(task => task.toLowerCase().trim() === newTask.toLowerCase().trim())){
-      console.log("task alreay exist" )
+      console.log("task already exist" )
       setError("This task is already exist!")
     } else {
       console.log(newTask.toLowerCase())
@@ -78,7 +86,7 @@ function TaskForm() {
         </div>
         <ul className="task-list">
           {tasks && tasks.map((task, index) => (
-            <li key={index}>
+            <li key={uuidv4()}>
               <input
                 type="checkbox"
                 checked={checkedTasks.includes(index)}

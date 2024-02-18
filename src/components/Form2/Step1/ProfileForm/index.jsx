@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import './style.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { incrementCurrentAccTab } from '../../../../reducers/FormSlice';
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
-import { addTempUser, addUser } from '../../../../reducers/AuthSlice';
 import { Link } from 'react-router-dom';
+
+//import icons
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+
+import { useDispatch, useSelector } from 'react-redux';
+
+// import from slice
+import { incrementCurrentAccTab } from '../../../../reducers/FormSlice';
+import { addTempUser } from '../../../../reducers/AuthSlice';
+
+// import css
+import './style.scss';
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({

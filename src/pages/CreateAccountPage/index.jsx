@@ -1,9 +1,13 @@
 import React from 'react'
 
+// import css
 import "./style.scss"
+
+// import components
 import AccountContainer from '../../components/Form2/AccountContainer'
 import Overlay from '../../components/Overlay'
 import RegisterSuccess from '../../components/Popups/RegisterSuccess'
+
 import { useSelector } from 'react-redux'
 
 const CreateAccount = () => {

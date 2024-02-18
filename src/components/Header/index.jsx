@@ -1,12 +1,17 @@
 import React from 'react'
-
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+
+import { useDispatch } from 'react-redux'
+
+// import from slice
 import { logout } from '../../reducers/AuthSlice'
 
 // import css
 import "./style.scss"
+
+// import component
 import Wrapper from '../Wrapper'
+
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()

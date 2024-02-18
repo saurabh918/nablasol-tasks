@@ -1,14 +1,20 @@
 // FormComponent.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// import css
 import './style.scss';
+
 import { useDispatch, useSelector } from 'react-redux';
+
+// import icons
 import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { decrementCurrentAccTab, showRegisterPopup } from '../../../../reducers/FormSlice';
-
 import { RxCross2 } from "react-icons/rx";
 import { FaQuestionCircle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+
+// import from slice
+import { decrementCurrentAccTab, showRegisterPopup } from '../../../../reducers/FormSlice';
 import { addUser } from '../../../../reducers/AuthSlice';
 
 const FormComponent = () => {
@@ -26,14 +32,8 @@ const FormComponent = () => {
   const [zipCodeError, setZipCodeError] = useState('');
   const [textIdNumberError, setTextIdNumberError] = useState('');
 
-  const currentStep = useSelector(state => state.forms.currentAccountFormTab)
   const tempUser = useSelector(state => state.auth.tempUser)
   const dispatch = useDispatch()
-
-  // Validation functions
-  const validateZipCode = (zip) => {
-    return /^[0-9]{6}$/.test(zip);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

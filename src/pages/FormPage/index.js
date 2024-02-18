@@ -1,12 +1,18 @@
 // App.js
-import React, { useEffect, useState } from 'react';
-import Form1 from '../../components/Form1';
+import React, { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+
+// import from slice
 import { openForm, resetStep } from '../../reducers/FormSlice';
 
+// import css
 import "./style.scss"
+
+// import components
 import Overlay from '../../components/Overlay';
 import NewProjectPopup from '../../components/Popups/NewProjectPopup';
+import Form1 from '../../components/Form1';
 
 function FormPage() {
   const isFormOpen = useSelector(state => state.forms.showForm)

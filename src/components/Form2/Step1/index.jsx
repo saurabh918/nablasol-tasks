@@ -1,6 +1,7 @@
 import React from 'react'
 import ProfileForm from './ProfileForm'
 
+// import css
 import "./style.scss"
 
 const ProfileInfo = () => {

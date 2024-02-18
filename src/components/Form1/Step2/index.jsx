@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+
+// import icons
 import { FaList, FaClipboard } from 'react-icons/fa';
+
+// import css
 import './style.scss';
-import { Link } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
+
+// import from slice
 import { decrementStep, incrementStep, updateCurrentStructure } from '../../../reducers/FormSlice';
 
 function ContainerSelection() {
