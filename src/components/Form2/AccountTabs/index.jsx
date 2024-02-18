@@ -21,8 +21,8 @@ const AccountTabs = ({ activeTab }) => {
     active2: (
       <>
         <div className='tab active flex-grow'>
+        <li><span className='step-count'>1</span> Your Profile</li>
         <li><span className='step-count'>2</span> Business Information</li>
-          <li>Tab 2</li>
         </div>
         <div className='tab'><span className='step-count'>3</span> Additional Users</div>
       </>
