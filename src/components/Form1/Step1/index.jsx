@@ -3,7 +3,7 @@ import NewClient from '../NewClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import { decrementStep, incrementStep, showNewClientPopup } from '../../../reducers/FormSlice';
+import { addTempData, decrementStep, incrementStep, showNewClientPopup } from '../../../reducers/FormSlice';
 import "./style.scss"
 
 
@@ -65,10 +65,9 @@ function Step1() {
     } 
     
     if (Object.keys(newErrors).length > 0) {
-      console.log(newErrors)
       setErrors(newErrors);
     } else {
-      // If no errors, proceed with form submission
+      dispatch(addTempData({project:formData.projectName, client:formData.client, date:formData.startDate+" to "+formData.endDate }))
       dispatch(incrementStep())
     }
 
@@ -123,6 +122,7 @@ function Step1() {
           value={formData.startDate}
           onChange={handleInputChange}
         />
+        <span className='date-range-symbol'>-</span>
       </div>
       <div className='form-fields'>
         <label className='end-date-label' htmlFor="endDate">End Date:</label>

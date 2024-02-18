@@ -1,3 +1,5 @@
+@use "../../../scss/variables" as v;
+
 h2.profile-form-title {
-  color: #4d4d4d;
+  color: v.$gray30;
 }

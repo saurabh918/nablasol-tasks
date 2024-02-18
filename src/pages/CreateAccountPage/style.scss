@@ -7,13 +7,13 @@
 
     h2 {
       margin-top: 15px;
-      color: #fff;
+      color: v.$white;
       font-size: 22px;
       font-family: sans-serif;
       text-align: center;
 
       &.profile-form-title {
-        color: #4d4d4d;
+        color: v.$gray30;
         font-size: 23px;
       }
     }
@@ -24,7 +24,7 @@
       position: absolute;
       bottom: -8%;
       left: 0;
-      color: #007bff;
+      color: v.$dodger-blue;
       font-size: 16px;
       transition: all 0.6 ease-in-out;
   

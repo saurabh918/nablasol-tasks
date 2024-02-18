@@ -4,6 +4,7 @@
   width: 300px;
   margin: 5% auto;
   padding: 20px;
+  position: relative;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: v.$snow;
@@ -16,7 +17,7 @@
   }
 
   .login-error {
-    bottom: 50%;
+    top: 50px;
   }
 
   form {
@@ -58,27 +59,8 @@
     }
   }
 
-//   .error {
-//     margin-bottom: 10px;
-//     color: #ff0000;
-//     position: relative;
-//     animation: slideIn 0.5s ease forwards;
-//     font-size: 14px;
-//   }
-// 
-//   @keyframes slideIn {
-//     0% {
-//       opacity: 0;
-//       transform: translateY(-20px);
-//     }
-//     100% {
-//       opacity: 1;
-//       transform: translateY(0);
-//     }
-//   }
-
   .sign-up-link {
-    color: #007bff;
+    color: v.$dodger-blue;
     &:hover {
       text-decoration: none;
     }

@@ -2,8 +2,7 @@ import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const PrivateRoutes = () => {
-  // const currentUser = JSON.parse(localStorage.getItem('user'))
-  const currentUser = true
+  const currentUser = JSON.parse(localStorage.getItem('user'))
   return (
     <div>
       {

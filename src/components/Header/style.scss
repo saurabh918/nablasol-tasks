@@ -23,6 +23,9 @@
         @media only screen and (max-width: v.$sm) {
           font-size: 13px;
         }
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }

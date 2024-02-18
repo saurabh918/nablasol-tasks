@@ -13,11 +13,42 @@
     text-align: center;
   }
 
+  .tab {
+    .step-count {
+      background: v.$gray30;
+      padding: 1px 5px;
+      border-radius: 100%;
+      color: v.$white;
+      font-size: 11px;
+      margin-right: 4px;
+
+      @media only screen and (max-width: v.$md) {
+        display: none;
+      }
+    }
+    &.active {
+      .step-count {
+        background: v.$white;
+        padding: 1px 5px;
+        border-radius: 100%;
+        color: v.$dodger-blue;
+        font-size: 11px;
+        margin-right: 4px;
+
+        @media only screen and (max-width: v.$md) {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+
   p{
     &.instructions {
       width: 58%;
       margin: 10px auto 35px;
-      color: #4d4d4d;
+      color: v.$gray30;
       text-align: center;
       font-size: 18px;
       line-height: 25px;
@@ -57,7 +88,10 @@
     label {
       margin-bottom: 12px;
       display: block;
-      color: #4d4d4d;
+      color: v.$gray30;
+      @media only screen and (max-width: v.$md) {
+        margin-top: 10px;
+      }
       @media only screen and (max-width: v.$sm) {
         line-height: 22px;
         font-size: 14px;    
@@ -69,7 +103,7 @@
       padding: 8px 0 8px 20px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      color: #4d4d4d;
+      color: v.$gray30;
     
       &::placeholder {
         color: #bfbfbf;
@@ -79,11 +113,11 @@
       &[type="submit"] {
         width: 100%;
         padding: 11px 11px 11px 0;
-        background: linear-gradient(to right, #c6c8ff (0%), #7b68ee (70%));
+        background: linear-gradient(to right, #c6c8ff (0%), v.$slateBlue (70%));
         color: white;
 
         &:hover {
-          background: linear-gradient(to right, #7b68ee (100%), #c6c8ff (0%));
+          background: linear-gradient(to right, v.$slateBlue (100%), #c6c8ff (0%));
         }
       }
       @media only screen and (max-width: v.$md) {

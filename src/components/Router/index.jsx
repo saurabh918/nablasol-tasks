@@ -13,9 +13,9 @@ const RouterComponent = () => {
       <Route path='/' element={<Login />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/forms/' element={<FormPage />} />
-          <Route path='/create' element={<CreateAccount />} />
-          <Route path='*' element={<ErrorPage />} />
         </Route>
+        <Route path='/create' element={<CreateAccount />} />
+        <Route path='*' element={<ErrorPage />} />
     </Routes>
   ) 
 }

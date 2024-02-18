@@ -2,12 +2,14 @@
 
 .form-one {
   width: 25%;
+  height: 550px;
   padding: 2% 4%;
   position: fixed;
   left: 50%;
   top: 50%;
   z-index: 2;
   transform: translate(-50%,-50%);
+  overflow: scroll;
   background-color: v.$white;
   font-family: Arial, sans-serif;
 
@@ -36,7 +38,7 @@
       label {
         display: block;
         margin-bottom: 10px;
-        color: #4d4d4d;
+        color: v.$gray30;
         font-weight: bold;
         font-size: 15px;
 
@@ -53,7 +55,7 @@
         font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        color: #4d4d4d;
+        color: v.$gray30;
       }
 
       input[type='date'] {
@@ -61,6 +63,9 @@
         display: flex;
         flex-direction: row-reverse;
         column-gap: 5px;
+        @media only screen and (max-width: v.$xsm) {
+          width: 78%;
+        }
       }
 
       .error {
@@ -68,13 +73,17 @@
         font-size: 13px;
         margin-top: 10px;
       }
+
+      &.add-client-content {
+        margin-bottom: 3px;
+      }
     }
 
     input[type='submit'] {
-      background-color: #007bff;
-      color: #fff;
+      background-color: v.$dodger-blue;
+      color: v.$white;
       padding: 9px 27px;
-      margin: 20px auto;
+      margin: 20px auto 0;
       display: block;
       border-radius: 4px;
       border: none;
@@ -95,12 +104,11 @@
     }
 
     button {
-      // padding: 0.5rem 1rem;
       border: 1px solid #ccc;
       background-color: transparent;
       border-radius: 4px;
       transition: background-color 0.3s ease;
-      color: #000;
+      color: v.$black;
       font-size: 14px;
       cursor: pointer;
 
@@ -117,7 +125,7 @@
       color: #bfbfbf;
       button {
         padding: 10px 11px;
-        color: #4d4d4d;
+        color: v.$gray30;
         border: 1px solid #ccc;
         background-color: transparent;
         white-space: nowrap;
@@ -136,22 +144,50 @@
       div {
         flex: 1;
       }
+
+      .date-range-symbol {
+        position: absolute;
+        top: 50%;
+        right: -8%;
+        color: #bfbfbf;
+        @media only screen and (max-width: v.$lg) {
+          right: -11%;
+        }
+
+        @media only screen and (max-width: v.$lg) {
+          right: -8%;
+        }
+
+        @media only screen and (max-width: v.$xsm) {
+          right: 3%;
+        }
+      }
+      @media only screen and (max-width: v.$sm) {
+        column-gap: 3px;
+      }
     }
 
     textarea {
       width: 95%;
       padding: 10px;
+      border: 1px solid #bfbfbf;
+
+      @media only screen and (max-width: v.$sm) {
+        width: 88%;
+        margin: 11px auto 0;
+        display: block;
+      }
     }
   }
 
   .back-button {
     position: absolute;
     left: 0;
-    color: #4d4d4d;
+    color: v.$gray30;
     cursor: pointer;
 
     &:hover {
-      color: #000;
+      color: v.$black;
     }
   }
 
@@ -167,7 +203,7 @@
 
   @media only screen and (max-width: v.$xl) {
     width: 40%;
-    top: 25%;
+    top: 35%;
   }
 
   @media only screen and (max-width: v.$md) {
@@ -181,6 +217,7 @@
   }
 
   @media only screen and (max-width: v.$xsm) {
+    width: 75%;
     top: 55%;
   }
 }

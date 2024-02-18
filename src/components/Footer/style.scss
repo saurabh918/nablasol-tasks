@@ -22,7 +22,7 @@
     justify-content: space-between;
 
     a {
-      color: #7b68ee;
+      color: v.$slateBlue;
       font-size: 20px;
       &:hover {
         color: #e6e3e3;
@@ -42,7 +42,7 @@
   }
 
   p.copyright-text {
-    color: #7b68ee;
+    color: v.$slateBlue;
     @media only screen and (max-width: v.$xsm) {
       font-size: 14px;
     }

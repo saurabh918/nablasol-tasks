@@ -6,23 +6,23 @@ const AccountTabs = ({ activeTab }) => {
     active1: (
       <>
         <div className='tab active'>
-          <li>Tab 1</li>
+          <li><span className='step-count'>1</span> Your Profile</li>
         </div>
         <div className='tab'>
-          Tab 2
+        <span className='step-count'>2</span> Business Information
         </div>
         <div className='tab'>
-          Tab 3
+        <span className='step-count'>3</span> Additional Users
         </div>
       </>
     ),
     active2: (
       <>
         <div className='tab active flex-grow'>
-          <li>Tab 1</li>
+        <li><span className='step-count'>2</span> Business Information</li>
           <li>Tab 2</li>
         </div>
-        <div className='tab'>Tab 3</div>
+        <div className='tab'><span className='step-count'>3</span> Additional Users</div>
       </>
     ),
     // Add more tab structures as needed

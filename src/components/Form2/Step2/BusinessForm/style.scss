@@ -28,10 +28,10 @@
     padding-top: 4px;
     border: none;
     border-radius: 5px;
-    background-color: #7b68ee;
+    background-color: v.$slateBlue;
 
     svg {
-      color: #fff;
+      color: v.$white;
       font-size: 21px;
     }
   }
@@ -88,7 +88,7 @@
       flex-direction: column;
       row-gap: 20px;
       background-color:rgba(0, 0, 0, 0.8);;
-      color: #fff;
+      color: v.$white;
       font-size: 14px;
       line-height: 25px;
     }

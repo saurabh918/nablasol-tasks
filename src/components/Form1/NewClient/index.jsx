@@ -40,7 +40,7 @@ function NewClient() {
   return (
     <div className='add-client-form'>
       <MdClose className="close-icon" onClick={hideClientPopup} />
-      <div>
+      <div className='add-client-content'>
         <label htmlFor="clientName">Client Name:</label>
         <input
           type="text"
