@@ -3,6 +3,9 @@ import React from 'react'
 // import component
 import BusinessForm from './BusinessForm'
 
+// import css
+import "./style.scss"
+
 const BusinessInfo = () => {
   return (
     <>

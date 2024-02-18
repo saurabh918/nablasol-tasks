@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import icons
 import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { RxCross2 } from "react-icons/rx";
+import { FaCheck } from "react-icons/fa6";
 import { FaQuestionCircle } from "react-icons/fa";
 
 // import from slice
@@ -163,14 +163,14 @@ const FormComponent = () => {
           <div className="document-field-content">
           <input type="text" value="Electronically sign the agreement(s)" readOnly />
           <button type='button' className='right-icon-btn'>{<RiArrowRightSLine />}</button>
-          <RxCross2 className='red-cross' />
+          <FaCheck className='green-check' />
           </div>
         </div>
         <div className="document-field">
           <div className="document-field-content">
           <input type="text" value="Non adult beverage kroger market supplier wavier and release" readOnly />
           <button type='button' className='right-icon-btn'>{<RiArrowRightSLine />}</button>
-          <RxCross2 className='red-cross' />
+          <FaCheck className='green-check' />
           </div>
           
         </div>
@@ -180,7 +180,7 @@ const FormComponent = () => {
           <div className="document-field-content">
           <input type="text" value="Electronically sign the agreement(s)" readOnly />
           <button type='button' className='right-icon-btn'>{<RiArrowRightSLine />}</button>
-          <RxCross2 className='red-cross' />
+          <FaCheck className='green-check' />
           </div>
         </div>
         <Link to="/" className='back-to-login'><RiArrowLeftSLine /> Back to Login</Link>

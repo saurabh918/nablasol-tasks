@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //import icons
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftSLine } from "react-icons/ri";
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -170,8 +170,7 @@ const ProfileForm = () => {
       <Link to="/" className='back-to-login'><RiArrowLeftSLine /> Back to Login</Link>
       <div className="account-step-navigation">
         <input type="button" className={`prev-step-btn ${currentStep===1 ? "hide": ""}`} value="< Previous Step" />
-        <input type="submit" className={`${currentStep===1 ? 'shrink-btn':" "}`} value="Next Step" />
-        <RiArrowRightSLine className='right-arrow-icon' />
+        <input type="submit" className={`next-step-btn ${currentStep===1 ? 'shrink-btn':" "}`} value="Next Step" />
         </div>
     </form>
   );

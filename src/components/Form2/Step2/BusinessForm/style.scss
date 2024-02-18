@@ -42,11 +42,11 @@
     column-gap: 20px;
     position: relative;
 
-    .red-cross {
+    .green-check {
       position: absolute;
       right: 10%;
       top: 27%;
-      color: red;
+      color: #008000;
       font-size: 15px;
       @media only screen and (max-width: v.$md) {
         top: 15%;
