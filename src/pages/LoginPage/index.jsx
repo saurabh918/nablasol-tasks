@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/AuthSlice';
 
 // import css
@@ -14,11 +14,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const currentUser = useSelector(state => state.auth.currentUser)
+
   useEffect(() => {
     const userFromStorage = localStorage.getItem('user');
     if (userFromStorage) {
       const user = JSON.parse(userFromStorage);
-        navigate('/forms/'+user);
+        navigate('/forms/');
     }
   }, [navigate]);
   const handleSubmit = (e) => {
@@ -29,33 +31,27 @@ const Login = () => {
     } else {
       // Dispatch login action
       dispatch(login({ username, password }));
-      // if(!currentUser) {
-      //   setError('Invalid username or password.');
-      // }
+      if(!currentUser) {
+        setError('Invalid username or password.');
+      }
     }
   };
 
   // Redirect based on authentication status and user role
-//   useEffect(() => {
-//     setError('');
-//     if (currentUser) {
-//       // Save user data to local storage upon successful login
-//       localStorage.setItem('user', JSON.stringify(currentUser));
-//       if (currentUser.role === 'admin') {
-//         navigate('/admin');
-//       } else if (currentUser.role === 'instructor') {
-//         navigate('/instructor/'+currentUser.username);
-//       } else {
-//         setError('Invalid username or password.');
-//       }
-//     } 
-// 
-//   }, [currentUser, navigate]);
+  useEffect(() => {
+    setError('');
+    if (currentUser) {
+      // Save user data to local storage upon successful login
+      localStorage.setItem('user', JSON.stringify(currentUser));
+      navigate("/forms/")
+      } 
+
+  }, [currentUser, navigate]);
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error login-error">{error}</div>}
       <form onSubmit={handleSubmit}>
       <table>
         <tbody>
@@ -91,6 +87,7 @@ const Login = () => {
           <button type="submit">Login</button>
         </div>
       </form>
+      <span>No account yet?</span><Link to="/create" className='sign-up-link'> Sign up</Link>
     </div>
   );
 }

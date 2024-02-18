@@ -6,6 +6,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
+  z-index: 2;
   transform: translate(-50%,-50%);
   background-color: v.$white;
   font-family: Arial, sans-serif;
@@ -30,43 +31,56 @@
     }
 
     div {
-      margin-bottom: 1rem;
+      margin-bottom: 17px;
 
       label {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 10px;
+        color: #4d4d4d;
         font-weight: bold;
+        font-size: 15px;
+
+        &.end-date-label {
+          visibility: hidden;
+        }
       }
 
       input[type='text'],
       input[type='date'],
       select {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
+        width: 95%;
+        padding: 7px;
+        font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 4px;
         color: #4d4d4d;
       }
 
+      input[type='date'] {
+        width: 92%;
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 5px;
+      }
+
       .error {
         color: red;
-        font-size: 0.8rem;
-        margin-top: 0.2rem;
+        font-size: 13px;
+        margin-top: 10px;
       }
     }
 
     input[type='submit'] {
       background-color: #007bff;
       color: #fff;
-      padding: 0.5rem 1rem;
+      padding: 9px 27px;
       margin: 20px auto;
       display: block;
       border-radius: 4px;
       border: none;
-      cursor: pointer;
       transition: background-color 0.3s ease;
-      font-size: 1rem;
+      cursor: pointer;
+      font-size: 12px;
 
       &:hover {
         background-color: v.$cobalt;
@@ -81,13 +95,13 @@
     }
 
     button {
-      padding: 0.5rem 1rem;
+      // padding: 0.5rem 1rem;
       border: 1px solid #ccc;
       background-color: transparent;
       border-radius: 4px;
       transition: background-color 0.3s ease;
       color: #000;
-      font-size: 1rem;
+      font-size: 14px;
       cursor: pointer;
 
       &:hover {
@@ -96,7 +110,11 @@
     }
 
     .client-fields {
+      width: 100%;
       display: flex;
+      align-items: center;
+      column-gap: 12px;
+      color: #bfbfbf;
       button {
         padding: 10px 11px;
         color: #4d4d4d;
@@ -110,11 +128,25 @@
         }
       }
     }
+
+    .dates-section {
+      display: flex;
+      column-gap: 25px;
+
+      div {
+        flex: 1;
+      }
+    }
+
+    textarea {
+      width: 95%;
+      padding: 10px;
+    }
   }
 
   .back-button {
     position: absolute;
-    left: -10%;
+    left: 0;
     color: #4d4d4d;
     cursor: pointer;
 
@@ -129,12 +161,27 @@
     }
   }
 
+  .form-fields {
+    position: relative;
+  }
+
   @media only screen and (max-width: v.$xl) {
     width: 40%;
+    top: 25%;
   }
 
   @media only screen and (max-width: v.$md) {
     width: 80%;
+    top: 35%;
+  }
+
+  @media only screen and (max-width: v.$sm) {
+    padding: 25px 35px;
+    top: 38%;
+  }
+
+  @media only screen and (max-width: v.$xsm) {
+    top: 55%;
   }
 }
 

@@ -2,9 +2,10 @@
 
 .form-one form .client-fields .add-client-form {
   position: absolute;
-  background: #007bff;
+  background: #a9a9a9;
   border-radius: 10px;
-  padding: 2% 8%;
+  padding: 2% 8% 6%;
+  z-index: 3;
 
   label {
     color: #fff;
@@ -12,13 +13,18 @@
   }
 
   button {
-    background-color: #8a2be2;
-    color: #fff;
-    font-size: 14px;
+    padding: 7px 10px;
+    background-color: #faebd7;
+    color: v.$black;
+    font-size: 10px;
 
     &:hover {
       background-color: v.$cobalt;
     }
+  }
+
+  .client-error {
+    bottom: -8%;
   }
 
   .close-icon {

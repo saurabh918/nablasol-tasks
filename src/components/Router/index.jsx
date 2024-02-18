@@ -12,7 +12,7 @@ const RouterComponent = () => {
     <Routes>
       <Route path='/' element={<Login />} />
         <Route element={<PrivateRoutes />}>
-          <Route path='/forms/:user?' element={<FormPage />} />
+          <Route path='/forms/' element={<FormPage />} />
           <Route path='/create' element={<CreateAccount />} />
           <Route path='*' element={<ErrorPage />} />
         </Route>

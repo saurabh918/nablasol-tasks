@@ -3,7 +3,7 @@ import { MdClose } from 'react-icons/md';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask, removeTask } from '../../../reducers/TaskSlice';
-import { decrementStep, incrementStep } from '../../../reducers/FormSlice';
+import { closeForm, decrementStep, incrementStep, showNewProjectPopup } from '../../../reducers/FormSlice';
 
 function TaskForm() {
   const tasks = useSelector(state => state.tasks.taskItems);
@@ -12,15 +12,24 @@ function TaskForm() {
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
+  const taskItems = useSelector(state => state.tasks.taskItems)
 
   const handleInputChange = (event) => {
     setNewTask(event.target.value);
   };
 
   const handleAdd = () => {
-    if (newTask.trim() !== '') {
+    if (newTask.trim() === ''){
+      console.log("empty error")
+      setError("Task name is empty!")
+    } else if(taskItems.find(task => task.toLowerCase().trim() === newTask.toLowerCase().trim())){
+      console.log("task alreay exist" )
+      setError("This task is already exist!")
+    } else {
+      console.log(newTask.toLowerCase())
       dispatch(addTask(newTask));
       setNewTask('');
+      setError('')
     }
   };
 
@@ -44,7 +53,9 @@ function TaskForm() {
     if (checkedTasks.length === 0) {
       setError('Please select at least one task');
     } else {
+      dispatch(showNewProjectPopup())
       dispatch(incrementStep());
+      dispatch(closeForm())
     }
   };
 
@@ -81,10 +92,10 @@ function TaskForm() {
             </li>
           ))}
         </ul>
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error task-error">{error}</p>}
         <div className='step-navigation'>
           <span className='back-button' onClick={() => { dispatch(decrementStep()) }}>&lt; Back</span>
-          <input type='submit' value="Next" />
+          <input type='submit' value="Submit" />
         </div>
       </div>
     </form>

@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import Step1 from './Step1';
@@ -16,10 +15,6 @@ function Form1() {
   const currentStep = useSelector(state => state.forms.currentStep)
 
   const dispatch = useDispatch()
-
-  // const handlePrevStep = () => {
-  //   dispatch(incrementStep)
-  // };
 
   const handleCloseForm = () => {
     dispatch(closeForm())

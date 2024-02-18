@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = {
+const storedClients = JSON.parse(localStorage.getItem("clients"))
+const initialState = storedClients ? storedClients : {
   clients: ["client1","client2","client3"]
 }
 
@@ -9,10 +10,13 @@ export const ClientSlice = createSlice({
   initialState,
   reducers: {
     addClient: (state,action) => {
-      return {
+      const newClients = {
         ...state,
         clients: [...state.clients, action.payload]
       }
+
+      localStorage.setItem("clients",JSON.stringify(newClients))
+      return newClients
     }
   }
 })

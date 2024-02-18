@@ -4,11 +4,12 @@ import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RiArrowRightSLine } from "react-icons/ri";
 import { RiArrowLeftSLine } from "react-icons/ri";
-import { decrementCurrentAccTab } from '../../../../reducers/FormSlice';
+import { decrementCurrentAccTab, showRegisterPopup } from '../../../../reducers/FormSlice';
 
 import { RxCross2 } from "react-icons/rx";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { addUser } from '../../../../reducers/AuthSlice';
 
 const FormComponent = () => {
   // State variables for form fields and errors
@@ -26,6 +27,7 @@ const FormComponent = () => {
   const [textIdNumberError, setTextIdNumberError] = useState('');
 
   const currentStep = useSelector(state => state.forms.currentAccountFormTab)
+  const tempUser = useSelector(state => state.auth.tempUser)
   const dispatch = useDispatch()
 
   // Validation functions
@@ -62,15 +64,23 @@ const FormComponent = () => {
     }
 
     // City validation
+    const cityRegex = /^[A-Za-z\s]+$/
     if (city.trim() === '') {
       setCityError('City is required');
+      formIsValid = false;
+    } else if(!city.trim().match(cityRegex)){
+      setCityError('Invalid city name');
       formIsValid = false;
     } else {
       setCityError('');
     }
 
     // Zip code validation
-    if (zipCode.trim() === '' || !validateZipCode(zipCode)) {
+    const zipRegex = /^[0-9]{6}$/
+    if (zipCode.trim() === '') {
+      setZipCodeError('Zip code is required')
+      formIsValid = false;
+    } else if(!zipCode.match(zipRegex)) { 
       setZipCodeError('Zip code should be 6 digits');
       formIsValid = false;
     } else {
@@ -87,7 +97,8 @@ const FormComponent = () => {
 
     // If form is valid, perform form submission
     if (formIsValid) {
-      console.log('Form submitted successfully');
+      dispatch(addUser(tempUser))
+      dispatch(showRegisterPopup())
     }
   };
 
@@ -176,8 +187,7 @@ const FormComponent = () => {
         <div className="account-step-navigation">
         <input type="button" className='prev-step-btn' value='Previous Step' onClick={handlePrevStep} />
         <RiArrowLeftSLine className='left-arrow-icon' />
-        <input type="submit" className='next-step-btn' value='Next Step' />
-        <RiArrowRightSLine className='right-arrow-icon' />
+        <input type="submit" className='next-step-btn' value='Submit' />
         </div>
       </form>
     </div>

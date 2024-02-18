@@ -1,3 +1,5 @@
+@use "../../scss/variables" as v;
+
 .create-account-container {
   width: 60%;
   margin: auto;
@@ -15,4 +17,28 @@
         font-size: 23px;
       }
     }
+
+    .back-to-login {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: -8%;
+      left: 0;
+      color: #007bff;
+      font-size: 16px;
+      transition: all 0.6 ease-in-out;
+  
+      &:hover {
+        text-decoration: none;
+      }
+
+      @media only screen and (max-width: v.$sm) {
+        bottom: -7%;
+        font-size: 13px;
+      }
+    }
+
+  @media only screen and (max-width: v.$xl) {
+    width: 90%;
+  }
 }

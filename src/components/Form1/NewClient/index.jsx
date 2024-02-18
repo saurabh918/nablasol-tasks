@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addClient } from '../../../reducers/ClientSlice';
 
 import { MdClose } from 'react-icons/md';
@@ -7,19 +7,28 @@ import { MdClose } from 'react-icons/md';
 import "./style.scss"
 import { closeClientPopup } from '../../../reducers/FormSlice';
 
+
 function NewClient() {
   const [newClientName, setNewClientName] = useState('');
   const dispatch = useDispatch()
+
+  const clients = useSelector(state => state.client.clients)
+
+  const [clientError,setClientError] = useState('')
 
   const handleInputChange = (event) => {
     setNewClientName(event.target.value);
   };
 
   const handleSubmit = () => {
-    if (newClientName.trim() !== '') {
-      // Call the parent component's function to add the new client
+    if (newClientName.trim() === '') {
+      setClientError('Client name is empty!')
+    } else if(clients.find(client => client.toLowerCase().trim() === newClientName.toLowerCase().trim())) {
+      setClientError('This client is already exist!')
+    } else {
       dispatch(addClient(newClientName));
-      // Clear the input field after adding the client
+      dispatch(closeClientPopup())
+      setClientError('')
       setNewClientName('');
     }
   };
@@ -41,6 +50,7 @@ function NewClient() {
           placeholder="Enter client name"
         />
       </div>
+      {clientError && <div className="error client-error">{clientError}</div>}
       <button onClick={() => handleSubmit()} type="button">Add Client</button>
     </div>
   );

@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const storedForms = JSON.parse(localStorage.getItem("formData"))
+const initialState = storedForms ? storedForms :{
   showForm: false,
   showNewClientForm: false,
   currentStep: 1,
   currentStructure: "list",
   selectedOption: "Everyone",
-  currentAccountFormTab: 2
+  currentAccountFormTab: 1,
+  showRegisterPopup: false,
+  tempFormData: {project:"",client:"",date:""},
+  showNewProjectPopup: false
 }
 
 const FormSlice = createSlice({
@@ -19,18 +23,21 @@ const FormSlice = createSlice({
         showForm: true
       }
     },
+
     closeForm: (state) => {
       return {
         ...state,
         showForm: false
       }
     },
+
     showNewClientPopup: (state) => {
       return {
         ...state,
         showNewClientForm: true
       }
     },
+
     closeClientPopup: (state) => {
       return {
         ...state,
@@ -38,9 +45,11 @@ const FormSlice = createSlice({
       }
     },
     incrementStep: (state) => {
-      return {
-        ...state,
-      currentStep: state.currentStep + 1
+      if(state.currentStep !== 4) {
+        return {
+          ...state,
+        currentStep: state.currentStep + 1
+        }
       }
     },
 
@@ -71,6 +80,7 @@ const FormSlice = createSlice({
         selectedOption: action.payload
       }
     },
+
     incrementCurrentAccTab: (state) => {
       if(state.currentAccountFormTab !== 2) {
         return {
@@ -79,6 +89,7 @@ const FormSlice = createSlice({
         }
       }
     },
+
     decrementCurrentAccTab: (state) => {
       if(state.currentAccountFormTab !== 1) {
         return {
@@ -86,9 +97,55 @@ const FormSlice = createSlice({
           currentAccountFormTab: state.currentAccountFormTab - 1
         }
       }
-    }
+    },
+    
+    showRegisterPopup: (state) => {
+      return {
+        ...state,
+        showRegisterPopup: true
+      }
+    },
+
+    resetRegistration: (state) => {
+      const updatedForms = {
+        showForm: false,
+        showNewClientForm: false,
+        currentStep: 1,
+        currentStructure: "list",
+        selectedOption: "Everyone",
+        currentAccountFormTab: 1,
+        showRegisterPopup: false
+      }
+      localStorage.setItem("formData", JSON.stringify(updatedForms))
+      return updatedForms
+    },
+
+    addTempData: (state,action) => {
+      const updatedData = {
+        ...state,
+        tempFormData: action.payload
+      }
+      localStorage.setItem("formData",JSON.stringify(updatedData))
+      return updatedData
+    },
+
+    showNewProjectPopup: (state) => {
+      return {
+        ...state,
+        showNewProjectPopup: true
+      }
+    },
+
+    hideNewProjectPopup: (state) => {
+      return {
+        ...state,
+        showNewProjectPopup: false
+      }
+    },
+
+
   }
 })
 
-export const {openForm,closeForm,showNewClientPopup,closeClientPopup,incrementStep,decrementStep,resetStep,updateCurrentStructure,updateSelectedOption,incrementCurrentAccTab,decrementCurrentAccTab} = FormSlice.actions
+export const {openForm,closeForm,showNewClientPopup,closeClientPopup,incrementStep,decrementStep,resetStep,updateCurrentStructure,updateSelectedOption,incrementCurrentAccTab,decrementCurrentAccTab,showRegisterPopup,resetRegistration,addTempData,showNewProjectPopup,hideNewProjectPopup} = FormSlice.actions
 export default FormSlice.reducer

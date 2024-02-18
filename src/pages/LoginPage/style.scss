@@ -7,6 +7,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: v.$snow;
+  text-align: center;
 
   h2 {
     font-size: 24px;
@@ -14,7 +15,12 @@
     text-align: center;
   }
 
+  .login-error {
+    bottom: 50%;
+  }
+
   form {
+    margin: 30px 0 20px;
     display: flex;
     flex-direction: column;
 
@@ -49,6 +55,32 @@
 
     .btn-container {
       text-align: center;
+    }
+  }
+
+//   .error {
+//     margin-bottom: 10px;
+//     color: #ff0000;
+//     position: relative;
+//     animation: slideIn 0.5s ease forwards;
+//     font-size: 14px;
+//   }
+// 
+//   @keyframes slideIn {
+//     0% {
+//       opacity: 0;
+//       transform: translateY(-20px);
+//     }
+//     100% {
+//       opacity: 1;
+//       transform: translateY(0);
+//     }
+//   }
+
+  .sign-up-link {
+    color: #007bff;
+    &:hover {
+      text-decoration: none;
     }
   }
 

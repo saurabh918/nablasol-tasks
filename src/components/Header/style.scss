@@ -8,15 +8,38 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .nav-options {
+      display: flex;
+      column-gap: 20px;
+      align-items: center;
+
+      .logout-button {
+        padding: 5px;
+        color: #ff0000;
+        background: rgb(0,0,0,0.3);
+        text-decoration: underline;
+        cursor: pointer;
+        @media only screen and (max-width: v.$sm) {
+          font-size: 13px;
+        }
+      }
+    }
   }
 
   h1 {
     font-size: 25px;
+    @media only screen and (max-width: v.$sm) {
+      font-size: 18px;
+    }
   }
 
   a {
     color: v.$white;
     text-decoration: none;
+    @media only screen and (max-width: v.$sm) {
+      font-size: 13px;
+    }
   }
 
   button {

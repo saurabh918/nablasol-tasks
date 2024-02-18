@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import NewClient from '../NewClient';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+
 import { decrementStep, incrementStep, showNewClientPopup } from '../../../reducers/FormSlice';
-import StepNavigation from '../../StepNavigation';
+import "./style.scss"
 
 
 function Step1() {
@@ -10,7 +12,8 @@ function Step1() {
     projectName: '',
     client: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    description: ''
   });
 
   const [errors, setErrors] = useState({
@@ -21,6 +24,7 @@ function Step1() {
   });
 
   const showClientPopup = useSelector(state => state.forms.showNewClientForm)
+  const clients = useSelector(state => state.client.clients)
 
   const dispatch = useDispatch()
 
@@ -49,14 +53,19 @@ function Step1() {
       newErrors.client = 'Client is required';
     }
     if (formData.startDate.trim() === '') {
-      newErrors.startDate = 'Start date is required';
+      newErrors.startDate = 'Start  and end date is required';
+    } else if (new Date(formData.startDate) >= new Date(formData.endDate)) {
+      newErrors.startDate = 'Start date must be before the end date'
     }
-    if (formData.endDate.trim() === '') {
-      newErrors.endDate = 'End date is required';
-    }
-    // You can add more complex validation here if needed
 
+    if (formData.endDate.trim() === '') {
+      newErrors.endDate = 'Start and end date is required';
+    } else if (new Date(formData.endDate) <= new Date(formData.startDate)) {
+        newErrors.endDate = 'End date must be after the start date'
+    } 
+    
     if (Object.keys(newErrors).length > 0) {
+      console.log(newErrors)
       setErrors(newErrors);
     } else {
       // If no errors, proceed with form submission
@@ -70,10 +79,9 @@ function Step1() {
   }
 
   return (
-    <>
     <form onSubmit={handleFormSubmit}>
       <h2>Create a Project</h2>
-      <div>
+      <div className='form-fields'>
         <label htmlFor="projectName">Project name:</label>
         <input
           type="text"
@@ -83,9 +91,9 @@ function Step1() {
           value={formData.projectName}
           onChange={handleInputChange}
         />
-        {errors.projectName && <div className="error">{errors.projectName}</div>}
+        {errors.projectName && <div className="error name-error">{errors.projectName}</div>}
       </div>
-      <div>
+      <div className='form-fields'>
         <label htmlFor="client">Client:</label>
         <div className='client-fields'>
         <select
@@ -95,18 +103,19 @@ function Step1() {
           onChange={handleInputChange}
         >
           <option value="">Select a client</option>
-          {/* You can dynamically generate options here if needed */}
-          <option value="client1">Client 1</option>
-          <option value="client2">Client 2</option>
-          <option value="client3">Client 3</option>
+          { clients && clients.map(client => {
+            return <option key={uuidv4()} value={client}>{client}</option>
+          })}
         </select>
+        <span>or</span>
         <button type='button' onClick={() => showAddClient()}>+ new client</button>
         { showClientPopup && <NewClient />}
         </div>
-        {errors.client && <div className="error">{errors.client}</div>}
+        {errors.client && <div className="error client-error">{errors.client}</div>}
       </div>
-      <div>
-        <label htmlFor="startDate">Start Date:</label>
+      <div className='dates-section'>
+      <div className='form-fields'>
+        <label htmlFor="startDate">Dates:</label>
         <input
           type="date"
           id="startDate"
@@ -114,10 +123,9 @@ function Step1() {
           value={formData.startDate}
           onChange={handleInputChange}
         />
-        {errors.startDate && <div className="error">{errors.startDate}</div>}
       </div>
-      <div>
-        <label htmlFor="endDate">End Date:</label>
+      <div className='form-fields'>
+        <label className='end-date-label' htmlFor="endDate">End Date:</label>
         <input
           type="date"
           id="endDate"
@@ -125,14 +133,27 @@ function Step1() {
           value={formData.endDate}
           onChange={handleInputChange}
         />
-        {errors.endDate && <div className="error">{errors.endDate}</div>}
       </div>
+      {errors.endDate && <div className="error date-error">{errors.endDate}</div>}
+      </div>
+      <div>
+        <label htmlFor="description">Notes:</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder='Optional'
+          value={formData.description}
+          rows={6}
+          onChange={handleInputChange}
+        />
+        {errors.description && <div className="error">{errors.description}</div>}
+      </div>
+
       <div className='step-navigation'>
       <span className='back-button' onClick={() => { dispatch(decrementStep()) }}>&lt; back</span>
       <input type="submit" value="Next" />
       </div>
     </form>
-    </>
   );
 }
 

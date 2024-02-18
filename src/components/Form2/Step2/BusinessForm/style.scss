@@ -3,17 +3,21 @@
   .form-row {
     display: flex;
     column-gap: 40px;
+
+    @media only screen and (max-width: v.$sm) {
+      flex-direction: column;
+      row-gap: 10px;
+    }
   }
 
   h3,.back-to-login {
     color: #6495ed;
   }
 
-  .back-to-login {
-    position: absolute;
-    bottom: -8%;
-    left: 0;
-    text-decoration: none;
+  h3 {
+    @media only screen and (max-width: v.$sm) {
+      text-align: center;
+    }
   }
 
   .form-section-title {
@@ -44,6 +48,18 @@
       top: 27%;
       color: red;
       font-size: 15px;
+      @media only screen and (max-width: v.$md) {
+        top: 15%;
+        right: -7%;
+      }
+      @media only screen and (max-width: v.$sm) {
+        top: 17%;
+        right: -6%;
+      }
+    }
+
+    @media only screen and (max-width: v.$md) {
+      flex-direction: column;
     }
   }
 

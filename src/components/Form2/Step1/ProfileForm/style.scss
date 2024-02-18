@@ -1,50 +1,9 @@
+@use "../../../../scss/variables" as v;
+.input-group {
+  position: relative;
 
-
-// .form {
-//   max-width: 600px;
-//   margin: 0 auto;
-// }
-// 
-// .row {
-//   margin-bottom: 20px;
-//   display: flex;
-//   justify-content: space-between;
-//   column-gap: 40px;
-// }
-// 
-// .input-group {
-//   flex: 0 0 48%;
-// }
-// 
-// label {
-//   display: block;
-//   font-weight: bold;
-//   margin-bottom: 5px;
-// }
-// 
-// input {
-//   width: 100%;
-//   padding: 8px 0 8px 20px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-// 
-//   &::placeholder {
-//     color: #bfbfbf;
-//     font-size: 14px;
-//   }
-// 
-//   &[type="submit"] {
-//     width: 18%;
-//     padding: 11px 0;
-//     position: absolute;
-//     right: 0;
-//     bottom: -17%;
-//     background: linear-gradient(to right, #c6c8ff (5%), #7b68ee (70%));
-//     color: white;
-//   }
-// }
-// 
-// .error {
-//   color: red;
-//   font-size: 0.9rem;
-// }
+  .error {
+    left: 0;
+    bottom: -40%; 
+  }
+}

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { json } from "react-router-dom"
 
-const initialState = {
+const storedTasks = JSON.parse(localStorage.getItem("tasks"))
+const initialState = storedTasks ? storedTasks : {
   taskItems : [
     "Marketing Website Design",
     "Branding Design",
@@ -27,18 +29,22 @@ export const TaskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state,action) => {
-      if(state.taskItems.find(task => task.toLowerCase() !== action.payload.toLowerCase())) {
-        return {
+        const newTasks = {
           ...state,
           taskItems: [...state.taskItems, action.payload]
         }
-      }
+
+        localStorage.setItem("tasks", JSON.stringify(newTasks))
+        return newTasks
     },
     removeTask: (state,action) => {
-      return {
+      const updatedTasks = {
         ...state,
         taskItems: state.taskItems.filter((task,index) => index !== action.payload)
       }
+
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+      return updatedTasks
     }
   }
 })

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './style.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { incrementCurrentAccTab } from '../../../../reducers/FormSlice';
-import { RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { addTempUser, addUser } from '../../../../reducers/AuthSlice';
+import { Link } from 'react-router-dom';
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +19,7 @@ const ProfileForm = () => {
   const [errors, setErrors] = useState({});
 
   const currentStep = useSelector(state => state.forms.currentAccountFormTab)
+  const userList = useSelector(state => state.auth.users)
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
@@ -29,33 +32,51 @@ const ProfileForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform validation
+    // validation
     const newErrors = {};
-    // if (!formData.firstName.trim()) {
-    //   newErrors.firstName = 'First Name is required';
-    // }
-    // if (!formData.lastName.trim()) {
-    //   newErrors.lastName = 'Last Name is required';
-    // }
-    // if (!formData.email.trim()) {
-    //   newErrors.email = 'Email is required';
-    // } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-    //   newErrors.email = 'Email is invalid';
-    // }
-    // if (!formData.phoneNumber.trim()) {
-    //   newErrors.phoneNumber = 'Phone Number is required';
-    // }
-    // if (!formData.password.trim()) {
-    //   newErrors.password = 'Password is required';
-    // }
-    // if (formData.password !== formData.confirmPassword) {
-    //   newErrors.confirmPassword = 'Passwords do not match';
-    // }
-    // setErrors(newErrors);
-    // If there are no errors, you can proceed with form submission
-    // For now, we'll just log the form data
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First Name is required';
+    } else if(userList.find(user => user.username.toLowerCase().trim() === formData.firstName.toLowerCase().trim())) {
+      newErrors.firstName = 'This name is already taken!';
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last Name is required';
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    } else if(userList.find(user => user.email.toLowerCase().trim() === formData.email.toLowerCase().trim())) {
+      newErrors.email = 'Above email is already registered';
+    }
+
+    const phoneRegex = /^[0-9]{10,10}$/
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone Number is required';
+    } else if(!formData.phoneNumber.match(phoneRegex)) {
+      newErrors.phoneNumber = 'Phone Number is invalid';
+    } else if(userList.find(user => user.phone === formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Above Number already registered';
+    }
+
+    if (!formData.password.trim()) {
+      newErrors.password = 'Password is required';
+    } else if(formData.password.toString().length < 8) {
+      newErrors.password = 'Password should have at least 8 characters';
+    } 
+
+    if (!formData.password.trim()) {
+      newErrors.confirmPassword = 'Please confirm passwords';
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    } 
+    
+    setErrors(newErrors);
+    console.log(Object.keys(newErrors))
     if (Object.keys(newErrors).length === 0) {
+      console.log("submitted")
       dispatch(incrementCurrentAccTab())
+      dispatch(addTempUser({username: formData.firstName.toLowerCase(),password: formData.password,email: formData.email, phone: formData.phoneNumber }))
     }
   };
 
@@ -139,6 +160,7 @@ const ProfileForm = () => {
           {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
         </div>
       </div>
+      <Link to="/" className='back-to-login'><RiArrowLeftSLine /> Back to Login</Link>
       <div className="account-step-navigation">
         <input type="button" className={`prev-step-btn ${currentStep===1 ? "hide": ""}`} value="< Previous Step" />
         <input type="submit" className={`${currentStep===1 ? 'shrink-btn':" "}`} value="Next Step" />
